@@ -8,6 +8,9 @@ import './navbar.html';
 Template.Navbar.helpers({
 	currentUserEmail() {
 		return Meteor.user().emails[0].address;
+	},
+	hasUser() {
+		return Meteor.call('getUserCount') == 0;
 	}
 });
 

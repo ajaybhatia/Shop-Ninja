@@ -72,11 +72,13 @@
                             Login
                         </a>
                     </li>
+                    {{#if hasUser}}
                     <li>
                         <a href="{{pathFor 'register'}}">
                             Register
                         </a>
                     </li>
+                    {{/if}}
                     {{/if}}
                 </ul>
             </div>

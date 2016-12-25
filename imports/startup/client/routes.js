@@ -26,7 +26,11 @@ FlowRouter.route('/', {
 FlowRouter.route('/register', {
   name: 'register',
   action() {
-    BlazeLayout.render('MainLayout', { main: 'Register' });
+    if (Meteor.call('getUserCount') == 0) {
+      BlazeLayout.render('MainLayout', { main: 'Register' });
+    } else {
+      BlazeLayout.render('MainLayout', { main: 'Home' });
+    }
   }
 });
 
