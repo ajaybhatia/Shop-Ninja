@@ -1,0 +1,11 @@
+<template name="AddProduct">
+	<legend><h3>Add Product</h3></legend>
+	{{#autoForm collection="Products" id="insertProductForm" type="insert"}}
+		{{> afQuickField name="name"}}
+		{{> afQuickField name="description"}}
+		{{> afQuickField name="costPrice"}}
+		{{> afQuickField name="salePrice"}}
+		{{> afQuickField name="category" options=categoryOptions}}
+		<button type="submit" class="btn btn-primary">Submit</button>
+	{{/autoForm}}
+</template>

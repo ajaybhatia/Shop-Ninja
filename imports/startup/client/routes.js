@@ -4,14 +4,17 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import '../../ui/layouts/mainLayout';
 // pages
 import '../../ui/pages/home/home';
+// categories
 import '../../ui/pages/categories/addCategory';
 import '../../ui/pages/categories/editCategory';
 import '../../ui/pages/categories/categories';
+// products
+import '../../ui/pages/products/addProduct';
+import '../../ui/pages/products/editProducts';
+import '../../ui/pages/products/products';
 // accounts
 import '../../ui/accounts/register/register';
 import '../../ui/accounts/login/login';
-
-import { Categories } from '../../api/categories/categories';
 
 FlowRouter.route('/', {
   name: 'home',
@@ -54,5 +57,29 @@ FlowRouter.route('/category/:_id', {
   action(params, queryParams) {
   	Meteor.subscribe('oneCategory', params._id);
     BlazeLayout.render('MainLayout', { main: 'EditCategory'});
+  }
+});
+
+FlowRouter.route('/product', {
+  name: 'addProduct',
+  action() {
+  	Meteor.subscribe('products');
+    BlazeLayout.render('MainLayout', { main: 'AddProduct' });
+  }
+});
+
+FlowRouter.route('/products', {
+  name: 'products',
+  action() {
+  	Meteor.subscribe('products');
+    BlazeLayout.render('MainLayout', { main: 'Products' });
+  }
+});
+
+FlowRouter.route('/product/:_id', {
+  name: 'editProduct',
+  action(params, queryParams) {
+  	Meteor.subscribe('oneProduct', params._id);
+    BlazeLayout.render('MainLayout', { main: 'EditProduct'});
   }
 });
