@@ -21,8 +21,26 @@
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                {{#if currentUser}}
                 <ul class="nav navbar-nav">
+                	<li>
+                		<a href="{{pathFor 'addCategory'}}">Category</a>
+                	</li>
+                	<li class="dropdown">
+                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                            Reports
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{pathFor 'categories'}}" class="categories">
+                                    Categories
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
+                {{/if}}
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -30,8 +48,7 @@
                     <li class="dropdown">
                         <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
                             {{currentUserEmail}}
-                            <span class="caret">
-                            </span>
+                            <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
