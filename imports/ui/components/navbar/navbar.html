@@ -15,7 +15,7 @@
                     </span>
                 </button>
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{pathFor 'home'}}">
                     Shop Ninja
                 </a>
             </div>
@@ -29,18 +29,15 @@
                     {{#if currentUser}}
                     <li class="dropdown">
                         <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                            Email
+                            {{currentUserEmail}}
                             <span class="caret">
                             </span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#logout" onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
+                                <a href="#" class="logout">
                                     Logout
                                 </a>
-                                <form action="#logout" id="logout-form" method="POST" style="display: none;">
-                                </form>
                             </li>
                         </ul>
                     </li>
