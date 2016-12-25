@@ -9,6 +9,8 @@ Template.Home.events({
 	'click .btn-lg'(event) {
 		event.preventDefault();
 
-		FlowRouter.go('login');
+		if (!Meteor.userId) {
+			FlowRouter.go('login');
+		}
 	}
 });
