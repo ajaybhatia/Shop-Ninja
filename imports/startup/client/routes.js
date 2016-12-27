@@ -10,8 +10,12 @@ import '../../ui/pages/categories/editCategory';
 import '../../ui/pages/categories/categories';
 // products
 import '../../ui/pages/products/addProduct';
-import '../../ui/pages/products/editProducts';
+import '../../ui/pages/products/editProduct';
 import '../../ui/pages/products/products';
+// vendors
+import '../../ui/pages/vendors/addVendor';
+import '../../ui/pages/vendors/editVendor';
+import '../../ui/pages/vendors/vendors';
 // accounts
 import '../../ui/accounts/register/register';
 import '../../ui/accounts/login/login';
@@ -85,5 +89,29 @@ FlowRouter.route('/product/:_id', {
   action(params, queryParams) {
   	Meteor.subscribe('oneProduct', params._id);
     BlazeLayout.render('MainLayout', { main: 'EditProduct'});
+  }
+});
+
+FlowRouter.route('/vendor', {
+  name: 'addVendor',
+  action() {
+  	Meteor.subscribe('vendors');
+    BlazeLayout.render('MainLayout', { main: 'AddVendor' });
+  }
+});
+
+FlowRouter.route('/vendors', {
+  name: 'vendors',
+  action() {
+  	Meteor.subscribe('vendors');
+    BlazeLayout.render('MainLayout', { main: 'Vendors' });
+  }
+});
+
+FlowRouter.route('/vendor/:_id', {
+  name: 'editVendor',
+  action(params, queryParams) {
+  	Meteor.subscribe('oneVendor', params._id);
+    BlazeLayout.render('MainLayout', { main: 'EditVendor'});
   }
 });
