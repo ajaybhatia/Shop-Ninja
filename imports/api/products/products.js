@@ -1,8 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-import { Categories } from '../categories/categories';
-
 export const Products = new Mongo.Collection('products');
 
 Products.allow({
@@ -48,6 +46,10 @@ Products.attachSchema(new SimpleSchema({
 	category: {
 		type: String,
 		label: 'Category'
+	},
+	vendor: {
+		type: String,
+		label: 'Vendor',
 	},
 	author: {
 		type: String,
