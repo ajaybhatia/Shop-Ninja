@@ -69,6 +69,10 @@ Products.attachSchema(new SimpleSchema({
 		type: String,
 		label: 'Vendor',
 	},
+	available: {
+		type: Boolean,
+		label: 'Available?'
+	},
 	author: {
 		type: String,
 		label: 'Author',
