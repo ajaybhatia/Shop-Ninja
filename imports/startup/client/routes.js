@@ -16,6 +16,10 @@ import '../../ui/pages/products/products';
 import '../../ui/pages/vendors/addVendor';
 import '../../ui/pages/vendors/editVendor';
 import '../../ui/pages/vendors/vendors';
+// customers
+import '../../ui/pages/customers/addCustomer';
+import '../../ui/pages/customers/editCustomer';
+import '../../ui/pages/customers/customers';
 // accounts
 import '../../ui/accounts/register/register';
 import '../../ui/accounts/login/login';
@@ -116,7 +120,31 @@ FlowRouter.route('/vendor/:_id', {
   }
 });
 
-AutoForm.addHooks(['editVendorForm', 'editCategoryForm', 'editProductForm'], {
+FlowRouter.route('/customer', {
+  name: 'addCustomer',
+  action() {
+  	Meteor.subscribe('customers');
+    BlazeLayout.render('MainLayout', { main: 'AddCustomer' });
+  }
+});
+
+FlowRouter.route('/customers', {
+  name: 'customers',
+  action() {
+  	Meteor.subscribe('customers');
+    BlazeLayout.render('MainLayout', { main: 'Customers' });
+  }
+});
+
+FlowRouter.route('/customer/:_id', {
+  name: 'editCustomer',
+  action(params, queryParams) {
+  	Meteor.subscribe('oneCustomer', params._id);
+    BlazeLayout.render('MainLayout', { main: 'EditCustomer'});
+  }
+});
+
+AutoForm.addHooks(['editVendorForm', 'editCategoryForm', 'editProductForm', 'editCustomerForm'], {
 	onSuccess(formType, result){
     switch (this.formId) {
       case 'editVendorForm':
@@ -129,6 +157,10 @@ AutoForm.addHooks(['editVendorForm', 'editCategoryForm', 'editProductForm'], {
 
       case 'editProductForm':
         FlowRouter.go('products');
+        break;
+
+      case 'editCustomerForm':
+        FlowRouter.go('customers');
     }
 	}
 });
