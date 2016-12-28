@@ -1,24 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Categories } from '../../../api/categories/categories';
 import { Products } from '../../../api/products/products';
+import { Vendors } from '../../../api/vendors/vendors';
 
 import './editProduct.html';
 
 Template.EditProduct.onCreated(function() {
-	// const categoryId = FlowRouter.getParam('_id');
-	// if (categoryId != undefined) {
-	// 	Meteor.subscribe('oneCategory', categoryId);
-	// }
 });
 
 Template.EditProduct.helpers({
 	product() {
 		return Products.findOne({_id: FlowRouter.getParam('_id')});
-	},
-	editProductId() {
-		return FlowRouter.getParam('_id');//Meteor.uuid();
 	},
 	categoryOptions() {
 		Meteor.subscribe('categories');
@@ -28,11 +23,20 @@ Template.EditProduct.helpers({
 				value: obj._id
 			}
 		});
+	},
+	vendorOptions() {
+		Meteor.subscribe('vendors');
+		return Vendors.find().map(obj => {
+			return {
+				label: obj.name,
+				value: obj._id
+			}
+		});
 	}
 });
 
-AutoForm.addHooks(null, {
+AutoForm.addHooks('editProductForm', {
 	onSuccess(formType, result){
-		FlowRouter.redirect('/products');
+		FlowRouter.go('products');
 	}
 });

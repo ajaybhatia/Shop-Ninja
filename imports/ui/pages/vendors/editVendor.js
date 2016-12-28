@@ -11,14 +11,11 @@ Template.EditVendor.onCreated(function() {
 Template.EditVendor.helpers({
 	vendor() {
 		return Vendors.findOne({_id: FlowRouter.getParam('_id')});
-	},
-	editVendorId() {
-		return FlowRouter.getParam('_id');//Meteor.uuid();
 	}
 });
 
-AutoForm.addHooks(null, {
+AutoForm.addHooks('editVendorForm', {
 	onSuccess(formType, result){
-		FlowRouter.redirect('/vendors');
+		FlowRouter.go('vendors');
 	}
 });
