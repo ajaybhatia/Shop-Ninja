@@ -9,10 +9,10 @@ Template.EditVendor.onCreated(function() {
 });
 
 Template.EditVendor.helpers({
-	category() {
+	vendor() {
 		return Vendors.findOne({_id: FlowRouter.getParam('_id')});
 	},
-	EditVendorId() {
+	editVendorId() {
 		return FlowRouter.getParam('_id');//Meteor.uuid();
 	}
 });

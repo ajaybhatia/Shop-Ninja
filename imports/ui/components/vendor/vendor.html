@@ -12,7 +12,8 @@
 			</h3>
 		</div>
 		<div class="panel-body">
-			{{address}}
+			<p>{{address}}</p>
+			<p>{{city}}{{#if pincode }} - {{pincode}}{{/if}}{{#if state}}, {{state}}{{/if}}</p>
 		</div>
 	</div>
 </template>

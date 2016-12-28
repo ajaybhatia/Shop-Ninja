@@ -33,6 +33,16 @@ Vendors.attachSchema(new SimpleSchema({
 		optional: true,
 		max: 200,
 		autoform: {
+			placeholder: "Vendor's City"
+		}
+	},
+	pincode: {
+		type: Number,
+		label: 'Pincode',
+		optional: true,
+		min: 100000,
+		max: 999999,
+		autoform: {
 			placeholder: "Vendor's Pincode"
 		}
 	},

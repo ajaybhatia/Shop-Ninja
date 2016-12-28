@@ -43,6 +43,24 @@ Products.attachSchema(new SimpleSchema({
 		autoform: {
 		}
 	},
+	quantity: {
+		type: Number,
+		label: 'Quantity',
+		min: 0,
+		optional: true,
+		autoform: {
+			placeholder: 'Quantity'
+		}
+	},
+	reorderLevel: {
+		type: Number,
+		label: 'Re-order Level',
+		min: 0,
+		optional: true,
+		autoform: {
+			placeholder: 'Reorder Level'
+		}
+	},
 	category: {
 		type: String,
 		label: 'Category'
