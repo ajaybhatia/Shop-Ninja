@@ -9,7 +9,7 @@ Template.Home.events({
 	'click .btn-lg'(event) {
 		event.preventDefault();
 
-		if (!Meteor.userId) {
+		if (!Meteor.userId()) {
 			FlowRouter.go('login');
 		}
 	}
