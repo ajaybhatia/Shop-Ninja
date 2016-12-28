@@ -115,3 +115,20 @@ FlowRouter.route('/vendor/:_id', {
     BlazeLayout.render('MainLayout', { main: 'EditVendor'});
   }
 });
+
+AutoForm.addHooks(['editVendorForm', 'editCategoryForm', 'editProductForm'], {
+	onSuccess(formType, result){
+    switch (this.formId) {
+      case 'editVendorForm':
+        FlowRouter.go('vendors');
+        break;
+
+      case 'editCategoryForm':
+        FlowRouter.go('categories');
+        break;
+
+      case 'editProductForm':
+        FlowRouter.go('products');
+    }
+	}
+});

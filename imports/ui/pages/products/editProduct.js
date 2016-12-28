@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Categories } from '../../../api/categories/categories';
 import { Products } from '../../../api/products/products';
@@ -32,11 +31,5 @@ Template.EditProduct.helpers({
 				value: obj._id
 			}
 		});
-	}
-});
-
-AutoForm.addHooks('editProductForm', {
-	onSuccess(formType, result){
-		FlowRouter.go('products');
 	}
 });

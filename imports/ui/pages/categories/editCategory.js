@@ -13,9 +13,3 @@ Template.EditCategory.helpers({
 		return Categories.findOne({_id: FlowRouter.getParam('_id')});
 	}
 });
-
-AutoForm.addHooks('editCategoryForm', {
-	onSuccess(formType, result){
-		FlowRouter.go('categories');
-	}
-});

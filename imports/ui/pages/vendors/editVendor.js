@@ -13,9 +13,3 @@ Template.EditVendor.helpers({
 		return Vendors.findOne({_id: FlowRouter.getParam('_id')});
 	}
 });
-
-AutoForm.addHooks('editVendorForm', {
-	onSuccess(formType, result){
-		FlowRouter.go('vendors');
-	}
-});
