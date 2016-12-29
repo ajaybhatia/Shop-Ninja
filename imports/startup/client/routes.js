@@ -144,9 +144,25 @@ FlowRouter.route('/customer/:_id', {
   }
 });
 
-AutoForm.addHooks(['editVendorForm', 'editCategoryForm', 'editProductForm', 'editCustomerForm'], {
+AutoForm.addHooks(['insertProductForm', 'insertVendorForm', 'insertCustomerForm', 'insertCategoryForm', 'editVendorForm', 'editCategoryForm', 'editProductForm', 'editCustomerForm'], {
 	onSuccess(formType, result){
     switch (this.formId) {
+      case 'insertProductForm':
+        FlowRouter.go('products');
+        break;
+
+      case 'insertVendorForm':
+        FlowRouter.go('vendors');
+        break;
+
+      case 'insertCustomerForm':
+        FlowRouter.go('customers');
+        break;
+
+      case 'insertCategoryForm':
+        FlowRouter.go('categories');
+        break;
+
       case 'editVendorForm':
         FlowRouter.go('vendors');
         break;

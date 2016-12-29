@@ -89,8 +89,6 @@ Customers.attachSchema(new SimpleSchema({
 	phoneNumber: {
 	  type: Number,
 		label: 'Phone Number',
-	  min: 11,
-	  max: 12,
 	  autoform: {
 	    afFieldInput: {
 	      type: 'tel'
