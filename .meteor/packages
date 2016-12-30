@@ -26,3 +26,4 @@ arillo:flow-router-helpers
 aldeed:autoform
 aldeed:collection2
 accounts-password
+session

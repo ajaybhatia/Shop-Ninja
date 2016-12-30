@@ -23,6 +23,8 @@ import '../../ui/pages/customers/customers';
 // accounts
 import '../../ui/accounts/register/register';
 import '../../ui/accounts/login/login';
+// billing
+import '../../ui/billing/bill';
 
 FlowRouter.route('/', {
   name: 'home',
@@ -68,7 +70,7 @@ FlowRouter.route('/category/:_id', {
   name: 'editCategory',
   action(params, queryParams) {
   	Meteor.subscribe('oneCategory', params._id);
-    BlazeLayout.render('MainLayout', { main: 'EditCategory'});
+    BlazeLayout.render('MainLayout', { main: 'EditCategory' });
   }
 });
 
@@ -92,7 +94,7 @@ FlowRouter.route('/product/:_id', {
   name: 'editProduct',
   action(params, queryParams) {
   	Meteor.subscribe('oneProduct', params._id);
-    BlazeLayout.render('MainLayout', { main: 'EditProduct'});
+    BlazeLayout.render('MainLayout', { main: 'EditProduct' });
   }
 });
 
@@ -116,7 +118,7 @@ FlowRouter.route('/vendor/:_id', {
   name: 'editVendor',
   action(params, queryParams) {
   	Meteor.subscribe('oneVendor', params._id);
-    BlazeLayout.render('MainLayout', { main: 'EditVendor'});
+    BlazeLayout.render('MainLayout', { main: 'EditVendor' });
   }
 });
 
@@ -140,7 +142,15 @@ FlowRouter.route('/customer/:_id', {
   name: 'editCustomer',
   action(params, queryParams) {
   	Meteor.subscribe('oneCustomer', params._id);
-    BlazeLayout.render('MainLayout', { main: 'EditCustomer'});
+    BlazeLayout.render('MainLayout', { main: 'EditCustomer' });
+  }
+});
+
+FlowRouter.route('/bill', {
+  name: 'bill',
+  action(params, queyParams) {
+    Meteor.subscribe('products');
+    BlazeLayout.render('MainLayout', { main: 'Bill' })
   }
 });
 
