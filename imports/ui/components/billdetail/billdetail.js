@@ -22,9 +22,9 @@ Template.BillDetail.events({
     if (selectedProductId) {
       instance.productId.set(selectedProductId);
       const product = Products.findOne({ _id: selectedProductId });
-      const salePrice = product.salePrice;
+      const salePrice = parseFloat(product.salePrice);
       const quantity = product.quantity;
-      const discount = $(event.target).parent().parent().find('.discount').val();
+      const discount = parseFloat($(event.target).parent().parent().find('.discount').val());
       const amount = (salePrice - discount) * quantity;
 
       $(event.target).parent().parent().find('.unitprice').val(salePrice);
@@ -38,7 +38,7 @@ Template.BillDetail.events({
   },
   'keyup .quantity'(event, instance) {
     const unitPrice = $(event.target).parent().parent().find('.unitprice').val();
-    const discount = $(event.target).parent().parent().find('.discount').val();
+    const discount = parseFloat($(event.target).parent().parent().find('.discount').val());
     const quantity = $(event.target).val();
     const quantityInStock = Products.findOne({ _id: instance.productId.get() }).quantity;
 
@@ -50,13 +50,13 @@ Template.BillDetail.events({
     }
   },
   'keyup .discount'(event) {
-    const unitPrice = $(event.target).parent().parent().find('.unitprice').val();
-    const discount = $(event.target).val();
+    const unitPrice = parseFloat($(event.target).parent().parent().find('.unitprice').val());
+    const discount = parseFloat($(event.target).val());
     const quantity = $(event.target).parent().parent().find('.quantity').val();
 
     if (discount > unitPrice) {
       alert('Discount cannot exceed Unit Price');
-    } else {  
+    } else {
       const amount = (unitPrice - discount) * quantity;
       $(event.target).parent().parent().find('.amount').val(amount);
     }
