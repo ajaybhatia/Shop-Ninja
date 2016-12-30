@@ -83,6 +83,22 @@ Template.BillDetail.events({
     if ($('tbody tr').length > 1) {
       if (confirm('Are you sure?')) {
         $(event.target).parent().parent().remove();
+
+        let totalAmount = 0.0;
+        $('.amount').each(function() {
+          if (parseFloat($(this).val()))
+            totalAmount += parseFloat($(this).val());
+        });
+
+        const tax = parseFloat($('.tax').val());
+        totalAmount = totalAmount + ((totalAmount*tax)/100.0);
+        $('.totalamount').val(totalAmount.toFixed(2));
+
+        let count = 0;
+        $('tbody tr td:first-child').each(function(index) {
+          $(this).find('input').val(index+1);
+          count = index;
+        });
       }
     } else {
       alert('Cannot delete a single bill item');
