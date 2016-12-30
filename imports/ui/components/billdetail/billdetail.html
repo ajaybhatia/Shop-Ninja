@@ -11,17 +11,21 @@
         {{/each}}
       </select>
     </td>
-    <td>
+    <td class="values">
       <input type="number" class="form-control unitprice">
     </td>
-    <td>
+    <td class="values">
       <input type="number" class="form-control quantity">
     </td>
-    <td>
-      <input type="number" class="form-control discount" value="0" placeholder="Discount">
+    <td class="values">
+      <input type="number" class="form-control pull-right discount" value="0" placeholder="Discount">
     </td>
     <td>
-      <input type="number" class="form-control amount" placeholder="Amount">
+      <input type="number" class="form-control pull-right amount" placeholder="Amount" readonly="readonly">
+      <span class="pull-right">(<em>Select and Press enter in amount box to add new Bill Item</em>)</span>
+    </td>
+    <td>
+      <i class="fa fa-times" style="cursor:pointer"></i>
     </td>
   </tr>
 </template>

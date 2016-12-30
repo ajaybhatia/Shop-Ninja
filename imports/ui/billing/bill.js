@@ -10,8 +10,11 @@ Template.Bill.onCreated(function() {
 });
 
 Template.Bill.events({
-  'click .add-bill-item'(event, instance) {
-    Blaze.renderWithData(Template.BillDetail, { index: instance.index.get() }, $('table tbody')[0]);
-    instance.index.set(instance.index.get() + 1);
+  'keyup .amount'(event, instance) {
+    if (event.keyCode == 13) {
+      Blaze.renderWithData(Template.BillDetail, { index: instance.index.get() }, $('table tbody')[0]);
+      instance.index.set(instance.index.get() + 1);
+      $('.product:last').focus();
+    }
   }
 });

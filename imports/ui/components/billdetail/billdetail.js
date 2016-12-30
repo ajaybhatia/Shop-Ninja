@@ -1,9 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Products } from '../../../api/products/products';
 
 import './billdetail.html';
+
+Template.BillDetail.onCreated(function() {
+  this.productId = new ReactiveVar();
+});
 
 Template.BillDetail.helpers({
   products() {
@@ -12,9 +17,10 @@ Template.BillDetail.helpers({
 });
 
 Template.BillDetail.events({
-  'change .product'(event) {
+  'change .product'(event, instance) {
     const selectedProductId = event.target.value;
     if (selectedProductId) {
+      instance.productId.set(selectedProductId);
       const product = Products.findOne({ _id: selectedProductId });
       const salePrice = product.salePrice;
       const quantity = product.quantity;
@@ -28,6 +34,40 @@ Template.BillDetail.events({
       $(event.target).parent().parent().find('.unitprice').val('');
       $(event.target).parent().parent().find('.quantity').val('');
       $(event.target).parent().parent().find('.amount').val('');
+    }
+  },
+  'keyup .quantity'(event, instance) {
+    const unitPrice = $(event.target).parent().parent().find('.unitprice').val();
+    const discount = $(event.target).parent().parent().find('.discount').val();
+    const quantity = $(event.target).val();
+    const quantityInStock = Products.findOne({ _id: instance.productId.get() }).quantity;
+
+    if (quantity > quantityInStock) {
+      alert('Quantity cannot exceed as in stock');
+    } else {
+      const amount = (unitPrice - discount) * quantity;
+      $(event.target).parent().parent().find('.amount').val(amount);
+    }
+  },
+  'keyup .discount'(event) {
+    const unitPrice = $(event.target).parent().parent().find('.unitprice').val();
+    const discount = $(event.target).val();
+    const quantity = $(event.target).parent().parent().find('.quantity').val();
+
+    if (discount > unitPrice) {
+      alert('Discount cannot exceed Unit Price');
+    } else {  
+      const amount = (unitPrice - discount) * quantity;
+      $(event.target).parent().parent().find('.amount').val(amount);
+    }
+  },
+  'click .fa-times'(event) {
+    if ($('tr').length > 1) {
+      if (confirm('Are you sure?')) {
+        $(event.target).parent().parent().remove();
+      }
+    } else {
+      alert('Cannot delete a single bill item');
     }
   }
 });
