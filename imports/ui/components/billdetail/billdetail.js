@@ -45,8 +45,17 @@ Template.BillDetail.events({
     if (quantity > quantityInStock) {
       alert('Quantity cannot exceed as in stock');
     } else {
-      const amount = (unitPrice - discount) * quantity;
+      const amount = parseFloat((unitPrice - discount) * quantity).toFixed(2);
       $(event.target).parent().parent().find('.amount').val(amount);
+
+      let totalAmount = 0.0;
+      $('.amount').each(function() {
+        totalAmount += parseFloat($(this).val());
+      });
+
+      const tax = parseFloat($('.tax').val());
+      totalAmount = totalAmount + ((totalAmount*tax)/100.0);
+      $('.totalamount').val(totalAmount.toFixed(2));
     }
   },
   'keyup .discount'(event) {
@@ -57,12 +66,21 @@ Template.BillDetail.events({
     if (discount > unitPrice) {
       alert('Discount cannot exceed Unit Price');
     } else {
-      const amount = (unitPrice - discount) * quantity;
+      const amount = parseFloat((unitPrice - discount) * quantity).toFixed(2);
       $(event.target).parent().parent().find('.amount').val(amount);
+
+      let totalAmount = 0.0;
+      $('.amount').each(function() {
+        totalAmount += parseFloat($(this).val());
+      });
+
+      const tax = parseFloat($('.tax').val());
+      totalAmount = totalAmount + ((totalAmount*tax)/100.0);
+      $('.totalamount').val(totalAmount.toFixed(2));
     }
   },
   'click .fa-times'(event) {
-    if ($('tr').length > 1) {
+    if ($('tbody tr').length > 1) {
       if (confirm('Are you sure?')) {
         $(event.target).parent().parent().remove();
       }
