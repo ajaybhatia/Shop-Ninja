@@ -1,6 +1,9 @@
 <template name="Bill">
   <legend><h3>Invoice</h3></legend>
   <div class="form-group">
+    <label for="date">{{currentDate}}</label>
+  </div>
+  <div class="form-group">
     <label for="name">Customer Name</label>
     <select name="name" id="name" class="form-control">
       <option value="">Choose Customer</option>
@@ -35,5 +38,7 @@
         </tr>
       </tfoot>
     </table>
+
+    <button type="button" class="btn btn-primary save-print">Save &amp; Print</button>
   </div>
 </template>

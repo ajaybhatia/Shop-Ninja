@@ -151,6 +151,7 @@ FlowRouter.route('/bill', {
   action(params, queyParams) {
     Meteor.subscribe('customers');
     Meteor.subscribe('products');
+    Meteor.subscribe('bills');
     BlazeLayout.render('MainLayout', { main: 'Bill' })
   }
 });
