@@ -8,6 +8,6 @@ import '../../components/product/product';
 
 Template.Products.helpers({
 	products() {
-		return Products.find({}, {sort: {createdAt: -1}}).fetch();
+		return Products.find({author: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
 	}
 });

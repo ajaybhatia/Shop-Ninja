@@ -9,7 +9,7 @@ import './product.html';
 Template.Product.helpers({
 	category() {
 		Meteor.subscribe('oneCategory', this.category);
-		return Categories.findOne({_id: this.category});
+		return Categories.findOne({_id: this.category, author: Meteor.userId()});
 	},
 	currentUserEmail() {
 		return Meteor.user().emails[0].address;
@@ -25,4 +25,3 @@ Template.Product.events({
 		}
 	}
 });
-

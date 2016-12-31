@@ -1,14 +1,14 @@
 import { Bills } from './bills';
 
 Meteor.methods({
-  addBill(billNo, customerId, productsBought, totalDiscount, totalAmount, authorId) {
+  addBill(billNo, customer, productsBought, totalDiscount, totalAmount, author) {
     return Bills.insert({
       billNo,
-      customerId,
+      customer,
       productsBought,
       totalDiscount,
       totalAmount,
-      authorId,
+      author,
       createdAt: new Date()
     });
   }

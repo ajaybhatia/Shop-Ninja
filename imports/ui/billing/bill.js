@@ -12,7 +12,7 @@ Template.Bill.onCreated(function() {
 
 Template.Bill.helpers({
   customers() {
-    return Customers.find({}, {sort:{firstName: 1, lastName: 1}}).fetch();
+    return Customers.find({author: Meteor.userId()}, {sort:{firstName: 1, lastName: 1}}).fetch();
   },
   currentDate() {
     let dateFormat = require('dateformat');

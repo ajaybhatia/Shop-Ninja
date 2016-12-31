@@ -8,6 +8,6 @@ import '../../components/vendor/vendor';
 
 Template.Vendors.helpers({
 	vendors() {
-		return Vendors.find({}, {sort: {createdAt: -1}}).fetch();
+		return Vendors.find({author: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
 	}
 });

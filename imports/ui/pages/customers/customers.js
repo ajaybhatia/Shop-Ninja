@@ -8,6 +8,6 @@ import '../../components/customer/customer';
 
 Template.Customers.helpers({
 	customers() {
-		return Customers.find({}, {sort: {createdAt: -1}}).fetch();
+		return Customers.find({author: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
 	}
 });

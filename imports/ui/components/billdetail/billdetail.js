@@ -12,7 +12,7 @@ Template.BillDetail.onCreated(function() {
 
 Template.BillDetail.helpers({
   products() {
-    return Products.find({}).fetch();
+    return Products.find({author: Meteor.userId()}).fetch();
   }
 });
 

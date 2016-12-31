@@ -10,6 +10,6 @@ import '../../components/category/category';
 
 Template.Categories.helpers({
 	categories() {
-		return Categories.find({}, {sort: {createdAt: -1}}).fetch();
+		return Categories.find({author: Meteor.userId()}, {sort: {createdAt: -1}}).fetch();
 	}
 });
