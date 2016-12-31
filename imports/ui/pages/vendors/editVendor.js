@@ -10,6 +10,6 @@ Template.EditVendor.onCreated(function() {
 
 Template.EditVendor.helpers({
 	vendor() {
-		return Vendors.findOne({_id: FlowRouter.getParam('_id')});
+		return Vendors.findOne({_id: FlowRouter.getParam('_id'), author: Meteor.userId()});
 	}
 });

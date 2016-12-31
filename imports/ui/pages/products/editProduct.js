@@ -12,7 +12,7 @@ Template.EditProduct.onCreated(function() {
 
 Template.EditProduct.helpers({
 	product() {
-		return Products.findOne({_id: FlowRouter.getParam('_id')});
+		return Products.findOne({_id: FlowRouter.getParam('_id'), author: Meteor.userId()});
 	},
 	categoryOptions() {
 		Meteor.subscribe('categories');

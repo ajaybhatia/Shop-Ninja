@@ -10,6 +10,6 @@ Template.EditCustomer.onCreated(function() {
 
 Template.EditCustomer.helpers({
 	customer() {
-		return Customers.findOne({_id: FlowRouter.getParam('_id')});
+		return Customers.findOne({_id: FlowRouter.getParam('_id'), author: Meteor.userId()});
 	}
 });

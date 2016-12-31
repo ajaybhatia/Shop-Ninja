@@ -10,6 +10,6 @@ Template.EditCategory.onCreated(function() {
 
 Template.EditCategory.helpers({
 	category() {
-		return Categories.findOne({_id: FlowRouter.getParam('_id')});
+		return Categories.findOne({_id: FlowRouter.getParam('_id'), author: Meteor.userId()});
 	}
 });
